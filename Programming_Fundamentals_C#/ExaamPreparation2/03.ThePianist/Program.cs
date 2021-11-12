@@ -8,6 +8,8 @@ namespace _03.ThePianist
     {
         static void Main(string[] args)
         {
+
+
             int n = int.Parse(Console.ReadLine());
             Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
             for (int i = 0; i < n; i++)
