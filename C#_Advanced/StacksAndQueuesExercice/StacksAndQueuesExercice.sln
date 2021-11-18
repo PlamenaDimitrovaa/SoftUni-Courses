@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StacksAndQueuesExercice", "StacksAndQueuesExercice\StacksAndQueuesExercice.csproj", "{BA989107-A564-4F5F-8FB2-FE5C8E7F9FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11.KeyRevolver", "11.KeyRevolver\11.KeyRevolver.csproj", "{32B881E0-1961-4E39-92A5-9BB2AC5CD2CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA989107-A564-4F5F-8FB2-FE5C8E7F9FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA989107-A564-4F5F-8FB2-FE5C8E7F9FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA989107-A564-4F5F-8FB2-FE5C8E7F9FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA989107-A564-4F5F-8FB2-FE5C8E7F9FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B881E0-1961-4E39-92A5-9BB2AC5CD2CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B881E0-1961-4E39-92A5-9BB2AC5CD2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B881E0-1961-4E39-92A5-9BB2AC5CD2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B881E0-1961-4E39-92A5-9BB2AC5CD2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {312736C9-6F4C-497C-A45E-76C7C4381525}
+	EndGlobalSection
+EndGlobal
