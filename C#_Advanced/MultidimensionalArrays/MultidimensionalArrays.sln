@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultidimensionalArrays", "MultidimensionalArrays\MultidimensionalArrays.csproj", "{874C8AE1-1307-467F-8B12-0EE9FDEEF48B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.SumMatrixColumn", "02.SumMatrixColumn\02.SumMatrixColumn.csproj", "{89AF7764-BEC7-498A-9EA3-E36ADBFE34FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.PrimaryDiagonal", "03.PrimaryDiagonal\03.PrimaryDiagonal.csproj", "{6A928599-25F4-41F2-88AC-926AA334F8B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{874C8AE1-1307-467F-8B12-0EE9FDEEF48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874C8AE1-1307-467F-8B12-0EE9FDEEF48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874C8AE1-1307-467F-8B12-0EE9FDEEF48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874C8AE1-1307-467F-8B12-0EE9FDEEF48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89AF7764-BEC7-498A-9EA3-E36ADBFE34FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89AF7764-BEC7-498A-9EA3-E36ADBFE34FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89AF7764-BEC7-498A-9EA3-E36ADBFE34FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89AF7764-BEC7-498A-9EA3-E36ADBFE34FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A928599-25F4-41F2-88AC-926AA334F8B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A928599-25F4-41F2-88AC-926AA334F8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A928599-25F4-41F2-88AC-926AA334F8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A928599-25F4-41F2-88AC-926AA334F8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80031C13-E58B-4941-819A-7076331223BF}
+	EndGlobalSection
+EndGlobal
