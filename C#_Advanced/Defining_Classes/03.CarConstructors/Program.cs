@@ -19,7 +19,11 @@ namespace CarManufacturer
 
             public Car(string make, string model, int year)
             {
+                Make = make;
+                Model = model;
                 Year = year;
+                FuelQuantity = 200;
+                FuelConsumption = 10;
             }
 
             public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption)
