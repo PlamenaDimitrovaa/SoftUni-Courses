@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamPreparation4", "ExamPreparation4\ExamPreparation4.csproj", "{D14A9562-254F-480B-B7A9-6F3E9E017C72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.Snake", "02.Snake\02.Snake.csproj", "{EA24628D-8BDC-4A21-9BB9-431AAB7E56B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D14A9562-254F-480B-B7A9-6F3E9E017C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14A9562-254F-480B-B7A9-6F3E9E017C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14A9562-254F-480B-B7A9-6F3E9E017C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D14A9562-254F-480B-B7A9-6F3E9E017C72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA24628D-8BDC-4A21-9BB9-431AAB7E56B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA24628D-8BDC-4A21-9BB9-431AAB7E56B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA24628D-8BDC-4A21-9BB9-431AAB7E56B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA24628D-8BDC-4A21-9BB9-431AAB7E56B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A65012C0-A2CD-4D41-AB17-E112C088E2AE}
+	EndGlobalSection
+EndGlobal
