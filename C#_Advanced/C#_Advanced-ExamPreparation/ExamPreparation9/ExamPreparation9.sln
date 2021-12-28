@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamPreparation9", "ExamPreparation9\ExamPreparation9.csproj", "{96631B58-F24B-4073-9429-FF67B19C9710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.TheBattleOfTheFiveArmies", "02.TheBattleOfTheFiveArmies\02.TheBattleOfTheFiveArmies.csproj", "{E16F17C8-BB19-48B6-B71D-C4DE1811448A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96631B58-F24B-4073-9429-FF67B19C9710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96631B58-F24B-4073-9429-FF67B19C9710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96631B58-F24B-4073-9429-FF67B19C9710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96631B58-F24B-4073-9429-FF67B19C9710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16F17C8-BB19-48B6-B71D-C4DE1811448A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16F17C8-BB19-48B6-B71D-C4DE1811448A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16F17C8-BB19-48B6-B71D-C4DE1811448A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16F17C8-BB19-48B6-B71D-C4DE1811448A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7542D0AB-4FDC-4F8A-8291-078D1504D996}
+	EndGlobalSection
+EndGlobal
