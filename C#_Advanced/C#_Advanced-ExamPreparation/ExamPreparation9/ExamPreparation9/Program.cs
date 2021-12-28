@@ -12,30 +12,51 @@ namespace ExamPreparation9
             var platess = Console.ReadLine().Split().Select(int.Parse).ToArray();
             Stack<int> plates = new Stack<int>(platess);
             Queue<int> guests = new Queue<int>(theEatingCapacityOfASingleGuest);
-            var wastedFood = 0;
-            var leftFood = 0;
+            var wasted = 0;
 
-            while (guests.Any())
+            while (guests.Count > 0 && plates.Count > 0)
             {
-                if (plates.Peek() >= guests.Peek())
+                int guest = guests.Peek();
+                int plate = plates.Peek();
+
+                if (plate >= guest)
                 {
-                    leftFood = plates.Peek() - guests.Peek();
-                    wastedFood += leftFood;
+                    plate -= guest;
+
+                    if (plate > 0)
+                    {
+                        wasted += plate;
+                    }
+
+                    guests.Dequeue();
+                    plates.Pop();
+                }
+                else
+                {
+                    guest -= plate;
+
                     plates.Pop();
                     guests.Dequeue();
+
+                    guests.Enqueue(guest);
+
+                    for (int i = 1; i < guests.Count; i++)
+                    {
+                        guests.Enqueue(guests.Dequeue());
+                    }
                 }
             }
 
-            if (plates.Any())
-            {
-                Console.WriteLine($"Plates: {String.Join(" ", plates)}");
-            }
-            else if (guests.Any())
+            if (guests.Count > 0)
             {
                 Console.WriteLine($"Guests: {String.Join(" ", guests)}");
+                Console.WriteLine($"Wasted grams of food: {wasted}");
             }
-
-            Console.WriteLine($"Wasted grams of food: {wastedFood}");
+            else
+            {
+                Console.WriteLine($"Plates: {String.Join(" ", plates)}");
+                Console.WriteLine($"Wasted grams of food: {wasted}");
+            }
         }
     }
 }
