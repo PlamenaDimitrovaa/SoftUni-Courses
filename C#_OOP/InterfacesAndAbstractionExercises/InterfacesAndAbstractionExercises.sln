@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DefineAnInterfaceIPerson", "01.DefineAnInterfaceIPerson\01.DefineAnInterfaceIPerson.csproj", "{57F44CA5-D195-4523-A843-58DD7D7E1450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.DefineAnInterfaceIPerson", "01.DefineAnInterfaceIPerson\01.DefineAnInterfaceIPerson.csproj", "{57F44CA5-D195-4523-A843-58DD7D7E1450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{F361F441-229B-4F9C-96D1-BE934967A050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{F361F441-229B-4F9C-96D1-BE934967A050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{6219970C-1816-4C32-B76B-F9BC7E526C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{6219970C-1816-4C32-B76B-F9BC7E526C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{C6B3803C-F553-4C2A-8B64-6A31EA716636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{C6B3803C-F553-4C2A-8B64-6A31EA716636}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.MilitaryElite", "07.MilitaryElite\07.MilitaryElite.csproj", "{A1D21A11-8CB1-4569-8E98-332D837D4CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
