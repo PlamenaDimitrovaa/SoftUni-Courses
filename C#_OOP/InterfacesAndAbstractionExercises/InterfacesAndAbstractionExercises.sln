@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.BorderControl", "04.Bord
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{0BED53D7-E4EA-4CED-A796-AA5EF6B2FE49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.MilitaryElite", "07.MilitaryElite\07.MilitaryElite.csproj", "{A1D21A11-8CB1-4569-8E98-332D837D4CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.MilitaryElite", "07.MilitaryElite\07.MilitaryElite.csproj", "{A1D21A11-8CB1-4569-8E98-332D837D4CBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.FoodShortage", "06.FoodShortage\06.FoodShortage.csproj", "{790E3002-DC8E-49BC-AAB4-87BB40EBF7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.CollectionHierarchy", "08.CollectionHierarchy\08.CollectionHierarchy.csproj", "{94328945-1875-4047-9CD8-ECBBB48DB931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.ExplicitInterfaces", "09.ExplicitInterfaces\09.ExplicitInterfaces.csproj", "{24D539C8-14B5-454E-8637-C4A9E4E4F996}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1D21A11-8CB1-4569-8E98-332D837D4CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790E3002-DC8E-49BC-AAB4-87BB40EBF7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790E3002-DC8E-49BC-AAB4-87BB40EBF7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790E3002-DC8E-49BC-AAB4-87BB40EBF7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790E3002-DC8E-49BC-AAB4-87BB40EBF7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94328945-1875-4047-9CD8-ECBBB48DB931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94328945-1875-4047-9CD8-ECBBB48DB931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94328945-1875-4047-9CD8-ECBBB48DB931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94328945-1875-4047-9CD8-ECBBB48DB931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D539C8-14B5-454E-8637-C4A9E4E4F996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D539C8-14B5-454E-8637-C4A9E4E4F996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D539C8-14B5-454E-8637-C4A9E4E4F996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D539C8-14B5-454E-8637-C4A9E4E4F996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
