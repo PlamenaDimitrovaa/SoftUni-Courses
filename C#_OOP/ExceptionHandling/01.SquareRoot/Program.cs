@@ -6,21 +6,30 @@ namespace _01.SquareRoot
     {
         static void Main(string[] args)
         {
+            static int Sqrt(double value)
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Invalid number");
+                }
+
+                return (int)Math.Sqrt(value);
+            }
             try
             {
-                int num = int.Parse(Console.ReadLine());
-                if (num < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                int squareRoot = (int)Math.Sqrt(num);
-                Console.WriteLine(squareRoot);
+                double n = double.Parse(Console.ReadLine());
+                Sqrt(n);
+                Console.WriteLine(Sqrt(n));
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Invalid number");
             }
             catch (FormatException)
             {
                 Console.WriteLine("Invalid number");
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 Console.WriteLine("Invalid number");
             }
