@@ -1,4 +1,4 @@
-
+using ExtendedDatabase;
 using NUnit.Framework;
 using System;
 
@@ -6,11 +6,11 @@ namespace Tests
 {
     public class ExtendedDatabaseTests
     {
-        private ExtendedDatabase extendedDb;
+        private ExtendedDatabase.ExtendedDatabase extendedDb;
         [SetUp]
         public void Setup()
         {
-            extendedDb = new ExtendedDatabase();
+            extendedDb = new ExtendedDatabase.ExtendedDatabase();
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace Tests
                 persons[i] = new Person(i, $"Name: {i}");
             }
 
-            extendedDb = new ExtendedDatabase(persons);
+            extendedDb = new ExtendedDatabase.ExtendedDatabase(persons);
             Assert.That(extendedDb.Count, Is.EqualTo(persons.Length));
 
             foreach (var person in persons)
@@ -40,7 +40,7 @@ namespace Tests
             {
                 persons[i] = new Person(i, $"Pesho: {i}");
             }
-            Assert.Throws<ArgumentException>(() => extendedDb = new ExtendedDatabase(persons));
+            Assert.Throws<ArgumentException>(() => extendedDb = new ExtendedDatabase.ExtendedDatabase(persons));
         }
 
         [Test]
