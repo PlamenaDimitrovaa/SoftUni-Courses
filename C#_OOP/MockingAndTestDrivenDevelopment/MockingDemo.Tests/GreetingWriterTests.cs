@@ -43,7 +43,6 @@ namespace MockingDemo.Tests
             {
                 sb.AppendLine(text);
             }
-
             public override string ToString()
             {
                 return sb.ToString().TrimEnd();
