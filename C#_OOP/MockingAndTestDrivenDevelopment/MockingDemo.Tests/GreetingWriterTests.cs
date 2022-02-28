@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Moq;
 
 namespace MockingDemo.Tests
 {
@@ -12,10 +13,17 @@ namespace MockingDemo.Tests
         [Test]
         public void WriteGreetingShouldWorkCorrectlyInTheMorning()
         {
-            var memory = new MemoryWriter();
-            var writer = new GreetingWriter(memory);
+
+            var myWriter = new Mock<IWriter>();
+            string result = null;
+            var writer = new GreetingWriter(myWriter.Object);
+            myWriter.Setup(x => x.Write(It.IsAny<string>()))
+                .Callback((string s) =>
+                {
+                    result = s;
+                });
             writer.WriteGreeting(new DateTime(2021, 1, 1, 8, 0, 0));
-            Assert.True(memory.ToString().Contains("morning"));
+            Assert.True(result.ToString().Contains("morning"));
         }
 
         [Test]
