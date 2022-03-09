@@ -17,7 +17,6 @@
         {
             this.writer = new Writer();
             this.reader = new Reader();
-
             this.controller = new Controller();
         }
         public void Run()
