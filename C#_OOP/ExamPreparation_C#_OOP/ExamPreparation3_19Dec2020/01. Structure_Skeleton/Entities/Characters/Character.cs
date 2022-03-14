@@ -26,6 +26,10 @@ namespace WarCroft.Entities.Characters.Contracts
 		private string name;
 		private double health;
 		private double armor;
+
+        public double BaseArmor { get => baseArmor; }
+		public double BaseHealth { get => baseHealth; }
+		public double AbilityPoints { get => abilityPoints; }
         public string Name
 		{
             get
