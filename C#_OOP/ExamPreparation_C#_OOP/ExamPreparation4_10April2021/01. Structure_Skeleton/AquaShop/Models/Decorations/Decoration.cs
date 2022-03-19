@@ -13,8 +13,8 @@ namespace AquaShop.Models.Decorations
             Price = price;
         }
 
-        public int Comfort { get; set; }
+        public int Comfort { get; }
 
-        public decimal Price { get; set; }
+        public decimal Price { get; }
     }
 }

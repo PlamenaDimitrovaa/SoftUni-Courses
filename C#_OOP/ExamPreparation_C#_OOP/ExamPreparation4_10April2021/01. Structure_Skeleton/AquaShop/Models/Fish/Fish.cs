@@ -23,7 +23,7 @@ namespace AquaShop.Models.Fish
             {
                 return name;
             }
-            set
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -40,7 +40,7 @@ namespace AquaShop.Models.Fish
             {
                 return species;
             }
-            set
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -51,7 +51,7 @@ namespace AquaShop.Models.Fish
             }
         }
 
-        public int Size { get; set; }
+        public int Size { get; protected set; }
 
         public decimal Price
         {
@@ -59,7 +59,7 @@ namespace AquaShop.Models.Fish
             {
                 return price;
             }
-            set
+            private set
             {
                 if (value <= 0)
                 {

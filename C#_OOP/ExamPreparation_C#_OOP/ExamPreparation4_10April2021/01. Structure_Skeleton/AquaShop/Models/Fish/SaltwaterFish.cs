@@ -10,11 +10,6 @@ namespace AquaShop.Models.Fish
             : base(name, species, price)
         {
             Size = 5;
-
-            if (species != "SaltwaterAquarium")
-            {
-
-            }
         }
 
         public override void Eat()
