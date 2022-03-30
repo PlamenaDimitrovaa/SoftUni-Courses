@@ -9,7 +9,8 @@ namespace EasterRaces.Repositories
 {
     public class DriverRepository : IRepository<IDriver>
     {
-        private List<IDriver> models;
+        private List<IDriver> models = new List<IDriver>();
+
         public void Add(IDriver model)
         {
             models.Add(model);

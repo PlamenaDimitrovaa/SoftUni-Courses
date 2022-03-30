@@ -14,11 +14,11 @@ namespace EasterRaces.Models.Cars
         private int maxHorsePower;
         public Car(string model, int horsePower, double cubicCentimeters, int minHorsePower, int maxHorsePower)
         {
+            this.minHorsePower = minHorsePower;
+            this.maxHorsePower = maxHorsePower;
             this.Model = model;
             this.HorsePower = horsePower;
             this.CubicCentimeters = cubicCentimeters;
-            this.minHorsePower = minHorsePower;
-            this.maxHorsePower = maxHorsePower;
         }
         public string Model
         {

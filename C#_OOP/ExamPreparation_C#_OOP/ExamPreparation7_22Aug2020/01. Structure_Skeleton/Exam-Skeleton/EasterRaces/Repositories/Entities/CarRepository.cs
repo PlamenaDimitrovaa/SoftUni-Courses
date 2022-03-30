@@ -9,7 +9,7 @@ namespace EasterRaces.Repositories
 {
     public class CarRepository : IRepository<ICar>
     {
-        private List<ICar> models;
+        private List<ICar> models = new List<ICar>();
         public void Add(ICar model)
         {
             models.Add(model);

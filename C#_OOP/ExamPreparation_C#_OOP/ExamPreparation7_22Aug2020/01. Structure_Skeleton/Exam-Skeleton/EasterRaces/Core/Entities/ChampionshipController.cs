@@ -91,11 +91,12 @@ namespace EasterRaces.Core
 
         public string CreateDriver(string driverName)
         {
-            IDriver driver = new Driver(driverName);
             if (driverRep.GetByName(driverName) != null)
             {
                 throw new ArgumentException($"Driver {driverName} is already created.");
             }
+
+            IDriver driver = new Driver(driverName);
             driverRep.Add(driver);
             return $"Driver {driver.Name} is created.";
         }
