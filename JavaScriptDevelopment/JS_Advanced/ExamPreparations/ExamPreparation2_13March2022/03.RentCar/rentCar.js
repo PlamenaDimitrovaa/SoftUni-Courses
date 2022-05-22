@@ -50,4 +50,4 @@ const rentCar = {
     }
 }
 
-module.exports = { rentCar };
+module.exports = rentCar;
