@@ -1,15 +1,18 @@
 function solve(){
+
    let createButton = document.querySelector('.site-content aside button.btn.create');
    createButton.addEventListener('click', createArticleHandler);
 
    function createArticleHandler(e){
       e.preventDefault();
+
       let authorInput = document.querySelector('#creator');
       let titleInput = document.querySelector('#title');
       let categoryInput = document.querySelector('#category');
-      let contentInput = document.querySelector('#content');
+      let contentTextarea = document.querySelector('#content');
 
       let articleElement = document.createElement('article');
+
       let titleHeading = document.createElement('h1');
       titleHeading.textContent = titleInput.value;
 
@@ -23,7 +26,7 @@ function solve(){
       creatorPara.textContent = 'Creator:';
       let creatorStrong = document.createElement('strong');
       creatorStrong.textContent = authorInput.value;
-      creatorPara.appendChild(categoryStrong);
+      creatorPara.appendChild(creatorStrong);
 
       let contentPara = document.createElement('p');
       contentPara.textContent = contentTextarea.value;
@@ -37,17 +40,17 @@ function solve(){
       deleteButton.addEventListener('click', deleteArticleHandler);
 
       let archiveButton = document.createElement('button');
-      archiveButton.textContent = "Delete";
-      archiveButton.classList.add('btn', 'delete');
+      archiveButton.textContent = "Archive";
+      archiveButton.classList.add('btn', 'archive');
       archiveButton.addEventListener('click', archiveArticleHandler);
 
       buttonsDiv.appendChild(deleteButton);
       buttonsDiv.appendChild(archiveButton);
 
       articleElement.appendChild(titleHeading);
-      articleElement.appendChild(categoryParagraph);
-      articleElement.appendChild(creatorParagraph);
-      articleElement.appendChild(contentParagraph);
+      articleElement.appendChild(categoryPara);
+      articleElement.appendChild(creatorPara);
+      articleElement.appendChild(contentPara);
       articleElement.appendChild(buttonsDiv);
 
       let postsSection = document.querySelector('.site-content main section');
@@ -75,6 +78,8 @@ function solve(){
       articleToArchive.remove();
 
       archiveLis.push(newTitleLi);
-      archiveLis.sort((a,b) => a.textContent.localeCompare(b.textContent)).forEach(li => archiveOl.appendChild(li))
+      archiveLis
+       .sort((a,b) => a.textContent.localeCompare(b.textContent))
+       .forEach(li => archiveOl.appendChild(li))
    }
   }
