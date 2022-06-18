@@ -1,3 +1,92 @@
+// class CarDealership{
+//     constructor(name){
+//         this.name = name;
+//         this.availableCars = [];
+//         this.soldCars = [];
+//         this.totalIncome = 0;
+//     }
+
+//     addCar(model, horsepower, price, mileage){
+//         if(model == '' || horsepower < 0 || price < 0 || mileage < 0 
+//             || !model || !horsepower || !price || !mileage){
+//             throw new Error('Invalid input!');
+//         }
+
+//         let currentCar = {
+//             model,
+//             horsepower,
+//             price,
+//             mileage,
+//         }
+
+//         this.availableCars.push(currentCar);
+//         return `New car added: ${model} - ${horsepower} HP - ${mileage.toFixed(2)} km - ${price.toFixed(2)}$`;
+//     }
+
+//     sellCar(model, desiredMileage){
+//         if(!this.availableCars.some(x => x.model == model)){
+//             throw new Error(`${model} was not found!`);
+//         }
+
+//         let newPrice = 0;
+//         let car = this.availableCars.find(x = x.model == model);
+//         let difference = Math.abs(desiredMileage - car.mileage);
+//         if(car.mileage <= desiredMileage){
+//             newPrice = car.price;
+//         } else if(difference <= 40000){
+//             newPrice = car.price * 0.95;
+//         } else if(difference > 40000){
+//             newPrice = car.price * 0.90;
+//         }
+
+//         this.availableCars = this.availableCars.filter(x => x.model !== model);
+
+//         let carToAdd = {
+//             model,
+//             horsepower: car.horsepower,
+//             soldPrice: newPrice,
+//         }
+
+//         this.soldCars.push(carToAdd);
+//         this.totalIncome += newPrice;
+
+//         return `${model} was sold for ${soldPrice.toFixed(2)}$`;
+//     }
+
+//     currentCar(){
+//         let result = [];
+//         if(this.availableCars.length <= 0){
+//             return `There are no available cars`;
+//         }
+
+//         result.push("-Available cars:");
+//         for (const car of this.availableCars) {
+//             result.push(`---${car.model} - ${car.horsepower} HP - ${car.mileage.toFixed(2)} km - ${car.price.toFixed(2)}$`);
+//         }
+
+//         return result.join('\n');
+//     }
+
+//     salesReport(criteria){
+//         if(criteria == 'horsepower'){
+//             this.soldCars = this.soldCars.sort((b, a) => b.horsepower - a.horsepower);
+//         } else if(criteria == 'model'){
+//             this.soldCars = this.soldCars.sort((a, b) => a.model.localeCompare(b.model));
+//         } else{
+//             throw new Error("Invalid criteria!");
+//         }
+
+//         let result = [];
+//         result.push(`-${this.name} has a total income of ${this.totalIncome.toFixed(2)}$`);
+//         result.push(`-${this.soldCars.length} cars sold:`);
+//         for (const car of this.soldCars) {
+//             result.push(`---${car.model} - ${car.horsepower} HP - ${car.soldPrice.toFixed(2)}$`);
+//         }
+
+//         return result.concat('\n');
+//     }
+// }
+
 class CarDealership {
     constructor(name){
         this.name = name;
