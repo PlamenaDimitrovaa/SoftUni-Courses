@@ -5,7 +5,7 @@ async function getInfo() {
         const stopNameElement = document.getElementById('stopName');
         const timeTableElement = document.getElementById('buses');
     try {
-        stopNameElement.textContent = 'Loading...';
+       stopNameElement.textContent = 'Loading...';
         timeTableElement.replaceChildren();
 
         const res = await fetch(url);
