@@ -1,3 +1,5 @@
+import { edit, onEdit } from './edit.js';
+
 function solve(){
     const loadAllBooksBtn = document.getElementById('loadBooks');
     const url = 'http://localhost:3030/jsonstore/collections/books';
@@ -36,7 +38,7 @@ function solve(){
             const buttonTd = document.createElement('td');
             const editBtn = document.createElement('button');
             editBtn.textContent = 'Edit';
-            //addEventListener('click', edit);
+            addEventListener('click', () => onEdit(e.target));
 
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
@@ -84,7 +86,7 @@ function solve(){
             const buttonTd = document.createElement('td');
             const editBtn = document.createElement('button');
             editBtn.textContent = 'Edit';
-           // editBtn.addEventListener('click', edit);
+            editBtn.addEventListener('click', () => onEdit(e.target));
             const deleteBtn = document.createElement('button');
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', remove);
