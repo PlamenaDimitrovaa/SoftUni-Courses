@@ -34,9 +34,8 @@ export const registerView = (ctx) => {
         const {email, password} = Object.fromEntries(formData);
         const confPass = formData.get('conf-pass');
 
-        if(email == '' || password == '' || confPass == ''){
+        if(email == '' || password == ''){
             alert('All fields are required!');
-            return;
         }
         
         if(confPass != password){

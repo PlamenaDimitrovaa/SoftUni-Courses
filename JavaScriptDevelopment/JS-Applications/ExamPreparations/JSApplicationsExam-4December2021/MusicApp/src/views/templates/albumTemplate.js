@@ -1,4 +1,4 @@
-import { html } from '../../../node_modules/lit-html/lit-html.js';
+import { html, nothing } from '../../../node_modules/lit-html/lit-html.js';
 
 const albumDetails = (albumId) => html`
 <div class="btn-group">

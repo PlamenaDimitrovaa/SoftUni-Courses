@@ -2,22 +2,22 @@ import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 import * as albumService from '../services/albumService.js';
 import { albumTemplate } from './templates/albumTemplate.js';
 
-const searchTemplate = (searchHandler, albums) => html`
+const searchTemplate = (searchHandler, albums, isLogged) => html`
     <section id="searchPage">
             <h1>Search by Name</h1>
 
             <div class="search">
                 <input id="search-input" type="text" name="search" placeholder="Enter desired albums's name">
-                <button class="button-list" @click=${searchHandler  }>Search</button>
+                <button class="button-list" @click=${searchHandler}>Search</button>
             </div>
 
             <h2>Results:</h2>
 
                 <!--If there are no matches-->
-                ${albums.length > 0
-                    ? albums.map(x => albumTemplate(x))
-                    : html`<p class="no-result">No result.</p>`
-                }
+                    ${albums.length > 0
+                        ? albums.map(x => albumTemplate(x, isLogged))
+                        : html`<p class="no-result">No result.</p>`
+                    }
             </div>
         </section>
 `;
@@ -27,9 +27,10 @@ export const searchView = (ctx) => {
         let searchElement = document.getElementById('search-input');
         albumService.search(searchElement.value)
             .then(albums => {
-                ctx.render(searchTemplate(searchHandler, albums));
-
+                const isLogged = Boolean(ctx.user);
+                ctx.render(searchTemplate(searchHandler, albums, isLogged));
             })
     }
+
     ctx.render(searchTemplate(searchHandler, []));
 }
