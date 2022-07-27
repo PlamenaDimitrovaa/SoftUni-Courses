@@ -9,8 +9,6 @@ import { createPage } from './views/create.js';
 import { detailsPage } from './views/details.js';
 import { myBooksPage } from './views/my-books.js';
 
-window.api = api;
-
 page(decorateContext);
 page('/', homePage);    
 page('/login', loginPage);
