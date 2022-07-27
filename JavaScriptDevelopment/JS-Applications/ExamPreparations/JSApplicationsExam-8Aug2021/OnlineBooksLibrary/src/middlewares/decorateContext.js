@@ -1,4 +1,5 @@
-import { render } from '../lib.js';
+import { logout } from '../api/data.js';
+import { page, render } from '../lib.js';
 import { getUserData } from '../util.js';
 
 const root = document.getElementById('site-content');
@@ -23,5 +24,7 @@ export function updateUserNav(){
 }
 
 function onLogout(){
-
+    logout();
+    updateUserNav();
+    page.redirect('/');
 }

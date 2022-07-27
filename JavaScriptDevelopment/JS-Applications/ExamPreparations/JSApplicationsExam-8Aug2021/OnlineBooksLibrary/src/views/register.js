@@ -1,11 +1,11 @@
-import { login } from '../api/data.js';
+import { register } from '../api/data.js';
 import { html } from '../lib.js';
 
-const loginTemplate = (onSubmit) => html`
-    <section id="login-page" class="login">
-        <form @submit=${onSubmit} id="login-form" action="" method="">
+const registerTemplate = (onSubmit) => html`
+    <section id="register-page" class="register">
+        <form @submit=${onSubmit} id="register-form" action="" method="">
             <fieldset>
-                <legend>Login Form</legend>
+                <legend>Register Form</legend>
                 <p class="field">
                     <label for="email">Email</label>
                     <span class="input">
@@ -18,14 +18,20 @@ const loginTemplate = (onSubmit) => html`
                         <input type="password" name="password" id="password" placeholder="Password">
                     </span>
                 </p>
-                <input class="button submit" type="submit" value="Login">
+                <p class="field">
+                    <label for="repeat-pass">Repeat Password</label>
+                    <span class="input">
+                        <input type="password" name="confirm-pass" id="repeat-pass" placeholder="Repeat Password">
+                    </span>
+                </p>
+                <input class="button submit" type="submit" value="Register">
             </fieldset>
         </form>
     </section>
 `;
 
-export function loginPage(ctx) {
-    ctx.render(loginTemplate(onSubmit));
+export function registerPage(ctx) {
+    ctx.render(registerTemplate(onSubmit));
 
     async function onSubmit(event){
         event.preventDefault();
@@ -33,12 +39,17 @@ export function loginPage(ctx) {
         const formData = new FormData(event.target);
         const email = formData.get('email').trim();
         const password = formData.get('password').trim();
+        const repass = formData.get('confirm-pass').trim();
 
-        if(email == '' || password == ''){
+        if(email == '' || password == '' || repass == ''){
             return alert('All fields are required!');
         }
 
-        await login(email, password);
+        if(repass != password){
+            return alert('Passwords must match!');
+        }
+
+        await register(email, password);
         ctx.updateUserNav();
         ctx.page.redirect('/');
     }
