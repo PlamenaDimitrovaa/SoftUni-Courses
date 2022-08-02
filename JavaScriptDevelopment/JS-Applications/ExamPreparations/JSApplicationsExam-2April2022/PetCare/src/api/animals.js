@@ -11,3 +11,11 @@ export async function createAnimal(data){
 export async function getAnimalById(id){
     return get('/data/pets/' + id);
 }
+
+export async function deleteAnimalById(id){
+    return del('/data/pets/' + id);
+}
+
+export async function editAnimal(id, data){
+    return put('/data/pets/' + id, data);
+}

@@ -3,6 +3,7 @@ import { getUserData } from './util.js';
 import { catalogView } from './views/catalog.js';
 import { createView } from './views/create.js';
 import { detailsView } from './views/details.js';
+import { editView } from './views/edit.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { logoutView } from './views/logout.js';
@@ -18,6 +19,7 @@ page('/login', loginView);
 page('/register', registerView);
 page('/logout', logoutView)
 page('/details/:id', detailsView);
+page('/edit/:id', editView);
 
 updateNav();
 page.start();
