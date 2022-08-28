@@ -82,3 +82,38 @@
 --ORDER BY Start, Name
 
 --15. User Email Providers:
+--SELECT u.Username,
+--SUBSTRING (u.Email, CHARINDEX( '@', u.Email) + 1,
+--LEN(u.Email)) AS [Email Provider]
+--FROM Users AS u
+--    WHERE u.Email LIKE '%.%'
+--	ORDER BY [Email Provider], u.Username
+
+--16. Get Users with IPAddress Like Pattern:
+--SELECT Username, IpAddress AS [IP Address] FROM Users
+--    WHERE IpAddress LIKE '___.1%.%.___'
+--    ORDER BY Username
+
+--17. Show All Games with Duration:
+--SELECT g.Name as Game,
+--CASE
+--WHEN DATEPART(HOUR, g.Start) BETWEEN 0 AND 11 THEN 'Morning'
+--WHEN DATEPART(HOUR, g.Start) BETWEEN 12 AND 17 THEN 'Afternoon'
+--WHEN DATEPART(HOUR, g.Start) BETWEEN 18 AND 23 THEN 'Evening'
+--END AS 'Part of the Day',
+ 
+--CASE
+--WHEN g.Duration <=3 THEN 'Extra Short'
+--WHEN g.Duration >=3 AND  g.Duration <=6 THEN 'Short'
+--WHEN g.Duration >6 THEN 'Long'
+--WHEN G.Duration is null THEN 'Extra Long'
+--END AS 'Duration'
+
+--FROM Games AS g
+--ORDER BY g.Name ASC, [Duration], [Part of the Day]
+
+--18. Orders Table:
+--SELECT ProductName, OrderDate, 
+--    DATEADD(DAY,3,OrderDate) AS [Pay Due],
+--    DATEADD(MONTH,1,OrderDate) AS [Deliver Due]
+--    FROM Orders
