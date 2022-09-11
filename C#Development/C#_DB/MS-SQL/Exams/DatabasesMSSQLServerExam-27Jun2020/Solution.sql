@@ -134,3 +134,89 @@
 --		GROUP BY j.JobId
 --		ORDER BY TotalOrder DESC, j.JobId
 
+--1//
+--SELECT p.PartId,
+--		p.Description,
+--		pn.Quantity AS [Required],
+--		p.StockQty AS [InStock],
+--		IIF(o.Delivered = 0, op.Quantity, 0)
+--	FROM Parts p
+--	LEFT JOIN PartsNeeded pn ON pn.PartId = p.PartId
+--	LEFT JOIN OrderParts op ON op.PartId = p.PartId
+--	LEFT JOIN Jobs j ON j.JobId = pn.JobId
+--	LEFT JOIN Orders o ON o.JobId = j.JobId
+--	WHERE j.Status != 'Finished' AND p.StockQty + IIF(o.Delivered = 0, op.Quantity, 0) < pn.Quantity
+--	ORDER BY PartId
+
+--2//
+--SELECT p.PartId, p.Description,
+--		SUM(pn.Quantity) AS Required,
+--		SUM(p.StockQty) AS InStock, 0 AS Ordered
+--	FROM Jobs j
+--FULL JOIN Orders o ON j.JobId = o.JobId
+--	JOIN PartsNeeded pn ON pn.JobId = j.JobId
+--	JOIN Parts p ON p.PartId = pn.PartId
+--		WHERE j.Status != 'Finished' AND o.Delivered IS NULL
+--	GROUP BY p.PartId, p.Description
+--		HAVING SUM(p.StockQty) < SUM(pn.Quantity)
+
+--CREATE PROC usp_PlaceOrder
+--(
+--	@jobId INT,
+--	@serialNumber VARCHAR(50),
+--	@qty INT
+--) AS
+
+--DECLARE @status VARCHAR(10) = (SELECT Status FROM Jobs WHERE JobId = @jobId)
+--DECLARE @partId VARCHAR(10) = (SELECT PartId FROM Parts WHERE SerialNumber = @serialNumber)
+
+--IF(@qty <= 0)
+--	THROW 50012, 'Part quantity must be more than zero!', 1
+--ELSE IF(@status IS NULL)
+--	THROW 50013, 'Job not found!', 1
+--ELSE IF(@status = 'Finished')
+--	THROW 50011, 'This job is not active!', 1
+--ELSE IF(@partId IS NULL)
+--	THROW 50014, 'Part not found!', 1
+
+--DECLARE @orderId INT = (SELECT o.OrderId
+--						FROM Orders o
+--						WHERE JobId = @jobId AND IssueDate IS NULL) 
+
+--IF(@orderId IS NULL)
+--BEGIN
+--	INSERT INTO Orders (JobId, IssueDate) VALUES (@jobId, NULL)
+--END
+
+--    SET	@orderId = (SELECT o.OrderId FROM Orders o WHERE JobId = @jobId AND o.IssueDate IS NULL) 
+
+--	DECLARE @orderPartExists INT = (SELECT OrderId FROM OrderParts WHERE OrderId = @orderId AND PartId = @partId)
+
+--	IF(@orderPartExists IS NULL)
+--	BEGIN
+--		INSERT INTO OrderParts (OrderId, PartId, Quantity) VALUES (@orderId, @partId, @qty)
+--	END
+--ELSE
+--BEGIN
+--	UPDATE OrderParts
+--	SET Quantity += @qty
+--	WHERE OrderID = @orderId AND PartId = @partId
+--END
+
+--CREATE FUNCTION udf_GetCost (@jobId INT)
+--RETURNS DECIMAL(15,2)
+--AS
+--BEGIN
+--DECLARE @result DECIMAL(15,2);
+--SET @result = (SELECT SUM(p.Price * op.Quantity) AS TotalSum
+--	 FROM Jobs AS j
+--	 JOIN Orders AS o ON o.JobId = j.JobId
+--	 JOIN OrderParts AS op ON op.OrderId = o.OrderId
+--	 JOIN Parts AS p ON p.PartId = op.PartId
+--	WHERE j.JobId = @jobId
+--GROUP BY j.JobId)
+
+--IF(@result IS NULL)
+--	SET @result = 0
+--RETURN @result
+--END
