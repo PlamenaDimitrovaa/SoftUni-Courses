@@ -137,4 +137,41 @@
 --	JOIN Cities AS hc ON h.CityId = hc.Id
 --	ORDER BY [Full Name], TripId
 
+--CREATE FUNCTION udf_GetAvailableRoom(@HotelId INT, @Date DATE, @People INT)
+--RETURNS VARCHAR(MAX)
+--BEGIN
+--		DECLARE @RoomInfo VARCHAR(MAX) = (SELECT TOP(1) 'Room ' + CONVERT(VARCHAR, r.Id) + ': ' + r.Type + 
+--		' (' + CONVERT(VARCHAR, r.Beds) + ' beds) - $' + CONVERT(VARCHAR, (BaseRate + Price) * @People)
+--		FROM Rooms r
+--		JOIN Hotels h ON h.Id = r.HotelId
+--		WHERE Beds >= @People AND HotelId = @HotelId AND
+--				NOT EXISTS (SELECT * FROM Trips t WHERE t.RoomId = r.Id
+--													AND CancelDate IS NULL
+--													AND @Date BETWEEN ArrivalDate AND ReturnDate)
+--		ORDER BY (BaseRate + Price) * @People DESC)
+
+--		IF(@RoomInfo IS NULL)
+--			RETURN 'No rooms available'
+--		RETURN @RoomInfo
+--END
+
+CREATE PROCEDURE usp_SwitchRoom(@TripId INT, @TargetRoomId INT)
+AS
+	DECLARE @TripHotelId INT = (SELECT r.HotelId FROM Trips t
+									JOIN Rooms r ON t.RoomId = r.Id
+									WHERE t.Id = @TripId)
+	DECLARE @TargetRoomHotelId INT = (SELECT HotelId FROM Rooms WHERE Id = @TargetRoomId)
+
+	IF(@TripHotelId != @TargetRoomHotelId)
+		THROW 50001, 'Target room is in another hotel!', 1
+
+	DECLARE @TripAccounts INT = (SELECT COUNT(*) FROM AccountsTrips WHERE TripId = @TripId)
+	DECLARE @TargetRoomBeds INT = (SELECT Beds FROM Rooms WHERE Id = @TargetRoomId)
+
+	IF(@TripAccounts >@TargetRoomBeds)
+		THROW 50002, 'Not enough beds in target room!', 1
+
+	UPDATE Trips
+		SET RoomId = @TargetRoomId 
+			WHERE Id = @TripId
 
