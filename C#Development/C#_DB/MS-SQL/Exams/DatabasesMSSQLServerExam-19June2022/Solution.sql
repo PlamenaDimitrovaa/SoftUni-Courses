@@ -98,3 +98,40 @@
 --		WHERE AnimalType = 'Mammals'
 --		ORDER BY o.Name, a.Name DESC
 
+--SELECT Name, PhoneNumber,  
+--		CASE
+--			WHEN LEFT(SUBSTRING(Address, 8, LEN(Address) - 7), 1) = ',' THEN SUBSTRING(Address, 9, LEN(Address) - 7)
+--			ELSE SUBSTRING(Address, 8, LEN(Address))
+--	    END AS Address
+--		FROM Volunteers v
+--		JOIN VolunteersDepartments vd ON v.DepartmentId = vd.Id
+--		WHERE DepartmentName = 'Education program assistant' AND Address LIKE '%Sofia%'
+--		ORDER BY Name
+
+--SELECT Name, DATEPART(YEAR, BirthDate) AS BirthYear, AnimalType
+--		FROM Animals a
+--		JOIN AnimalTypes at ON at.Id = a.AnimalTypeId
+--		WHERE OwnerId IS NULL AND DATEDIFF(YEAR, BirthDate, '01/01/2022') < 5 AND AnimalType != 'Birds'
+--		ORDER BY Name
+
+--CREATE FUNCTION udf_GetVolunteersCountFromADepartment (@VolunteersDepartment VARCHAR(MAX))
+--RETURNS INT
+--AS
+--BEGIN
+--	DECLARE @Result INT = (SELECT COUNT(*)
+--			FROM Volunteers v
+--			JOIN VolunteersDepartments vd ON v.DepartmentId = vd.Id
+--			WHERE DepartmentName = @VolunteersDepartment
+--			GROUP BY DepartmentName)
+
+--		RETURN @Result
+--END
+
+--CREATE PROC usp_AnimalsWithOwnersOrNot(@AnimalName VARCHAR(MAX))
+--AS
+--BEGIN
+--	SELECT a.Name, ISNULL(o.Name, 'For adoption') AS OwnersName
+--	FROM Animals a
+--	LEFT JOIN Owners o ON o.Id = a.OwnerId
+--	WHERE a.Name = @AnimalName
+--END
