@@ -80,10 +80,77 @@
 --	SET BrandDescription = 'New description'
 --		WHERE BrandDescription IS NULL
 
+--DELETE FROM Clients 
+--	WHERE AddressId IN (7, 8, 10)
+
 --DELETE FROM Addresses 
 --	WHERE LEFT(Country, 1) = 'C'
 
---DELETE FROM Clients 
---	WHERE AddressId = 4
+--SELECT CigarName, PriceForSingleCigar, ImageURL
+--	FROM Cigars
+--	ORDER BY PriceForSingleCigar, CigarName DESC
 
+--SELECT * FROM Cigars
+--	WHERE TastId IN 
 
+--SELECT c.Id, CigarName, PriceForSingleCigar, TasteType, TasteStrength
+--	FROM Cigars c
+--	JOIN Tastes t ON t.Id = c.TastId
+--	WHERE TasteType IN ('Earthy', 'Woody')
+--	ORDER BY PriceForSingleCigar DESC
+
+--SELECT Id, FirstName + ' ' + LastName AS ClientName, Email
+--	FROM Clients c
+--	LEFT JOIN ClientsCigars cc ON c.Id = cc.ClientId
+--	WHERE CigarId IS NULL
+--	ORDER BY ClientName
+
+--SELECT TOP(5) CigarName, PriceForSingleCigar, ImageURL
+--	FROM Cigars c
+--	JOIN Sizes s ON s.Id = c.SizeId
+--		WHERE s.[Length] >= 12 AND (CHARINDEX('ci', CigarName) > 0 OR (PriceForSingleCigar > 50 AND RingRange > 2.55))
+--		ORDER BY CigarName, PriceForSingleCigar DESC
+
+--SELECT FirstName + ' ' + LastName AS FullName, Country, ZIP, CONCAT('$', MAX(PriceForSingleCigar)) AS CigarPrice
+--	FROM Clients c 
+--	JOIN Addresses a ON c.AddressId = a.Id
+--	JOIN ClientsCigars cc ON cc.ClientId = c.Id
+--	JOIN Cigars cg ON cg.Id = cc.CigarId
+--		WHERE ISNUMERIC(ZIP) = 1
+--	GROUP BY FirstName + ' ' + LastName, Country, ZIP
+
+--SELECT LastName, AVG([Length]) AS CigarLength, CEILING(AVG(RingRange)) AS CigarRingRange
+--	FROM ClientsCigars cc 
+--	JOIN Clients c ON c.Id = cc.ClientId
+--	JOIN Cigars cg ON cg.Id = cc.CigarId
+--	JOIN Sizes s ON s.Id = cg.SizeId
+--	GROUP BY c.LastName
+--	ORDER BY CigarLength DESC
+
+--CREATE FUNCTION udf_ClientWithCigars(@name VARCHAR(MAX))
+--RETURNS INT 
+--AS
+--BEGIN
+--	RETURN (SELECT COUNT(*) 
+--		FROM Cigars c
+--		JOIN ClientsCigars cc ON c.Id = cc.CigarId
+--		JOIN Clients cl ON cl.Id = cc.ClientId
+--		WHERE FirstName = @name)
+--END
+
+--CREATE OR ALTER PROCEDURE usp_SearchByTaste(@taste VARCHAR(MAX))
+--AS
+--	SELECT CigarName,
+--		   CONCAT('$', PriceForSingleCigar) AS Price,
+--		   TasteType,
+--		   BrandName,
+--		   CONCAT([Length], ' cm') AS CigarLength,
+--		   CONCAT(RingRange, ' cm') AS CigarRingRange
+--			FROM Cigars c
+--			JOIN Tastes t ON c.TastId = t.Id
+--			JOIN Brands b ON c.BrandId = b.Id
+--			JOIN Sizes s ON c.SizeId = s.Id
+--			WHERE TasteType = @taste
+--			ORDER BY CigarLength, CigarRingRange DESC
+
+--EXEC usp_SearchByTaste 'Woody'
