@@ -35,7 +35,108 @@ namespace CarDealer
 
             //Console.WriteLine(result);
 
-            Console.WriteLine(GetCarsWithDistance(context));
+            Console.WriteLine(GetSalesWithAppliedDiscount(context));
+        }
+
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            var sales = context.Sales
+                .Select(x => new SaleOutputModel
+                {
+                    Car = new CarSaleOutputModel
+                    {
+                        Make = x.Car.Make,
+                        Model = x.Car.Model,
+                        TravelledDistance = x.Car.TravelledDistance
+                    },
+                    Discount = x.Discount,
+                    CustomerName = x.Customer.Name,
+                    Price = x.Car.PartCars.Sum(x => x.Part.Price),
+                    PriceWithDiscount = x.Car.PartCars.Sum(x => x.Part.Price) -
+                                x.Car.PartCars.Sum(x => x.Part.Price) * x.Discount / 100
+                })
+                .ToList();
+
+                var result = XmlConverter.Serialize(sales, "sales");
+                return result;
+        }
+
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var customers = context.Customers
+                .Where(x => x.Sales.Any())
+                .Select(x => new CustomerOutputModel
+                {
+                    FullName = x.Name,
+                    BoughtCars = x.Sales.Count,
+                    SpentMoney = x.Sales.Select(x => x.Car)
+                    .SelectMany(x => x.PartCars)
+                    .Sum(x => x.Part.Price)
+                })
+                .OrderByDescending(x => x.SpentMoney)
+                .ToList();
+
+            var result = XmlConverter.Serialize(customers, "customers");
+            return result;
+        }
+
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            var cars = context.Cars
+                .Select(x => new CarPartOutputModel
+                {
+                    Make = x.Make,
+                    Model = x.Model,
+                    TravelledDistance = x.TravelledDistance,
+                    Parts = x.PartCars.Select(p => new CarPartInfoOutputModel
+                    {
+                        Name = p.Part.Name,
+                        Price = p.Part.Price
+                    })
+                    .OrderByDescending(p => p.Price)
+                    .ToArray()
+                })
+                .OrderByDescending(x => x.TravelledDistance)
+                .ThenBy(x => x.Model)
+                .Take(5)
+                .ToList();
+
+            var result = XmlConverter.Serialize(cars, "cars");
+            return result;
+        }
+
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            var suppliers = context.Suppliers
+                .Where(x => !x.IsImporter)
+                .Select(x => new SupplierOutputModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    PartsCount = x.Parts.Count
+                })
+                .ToList();
+
+            var result = XmlConverter.Serialize(suppliers, "suppliers");
+            return result;
+        }
+
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            var cars = context.Cars
+                .Where(x => x.Make == "BMW")
+                .Select(x => new BmwOutputModel
+                {
+                    Id = x.Id,
+                    Model = x.Model,
+                    TravelledDistance = x.TravelledDistance
+                })
+                .OrderBy(x => x.Model)
+                .ThenByDescending(x => x.TravelledDistance)
+                .ToList();
+
+            var result = XmlConverter.Serialize(cars, "cars");
+            return result;
         }
 
         public static string GetCarsWithDistance(CarDealerContext context)
@@ -65,6 +166,7 @@ namespace CarDealer
             return result;
 
         }
+
         public static string ImportSales(CarDealerContext context, string inputXml)
         {
             const string root = "Sales";
@@ -85,6 +187,7 @@ namespace CarDealer
 
             return $"Successfully imported {sales.Count}";
         }
+
         public static string ImportCustomers(CarDealerContext context, string inputXml)
         {
             const string root = "Customers";
