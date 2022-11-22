@@ -26,6 +26,7 @@ namespace BookShop.DataProcessor.ImportDto
         [XmlElement("Pages")]
         public int Pages { get; set; }
 
+        [Required]
         [XmlElement("PublishedOn")]
         public string PublishedOn { get; set; }
     }
