@@ -1,0 +1,292 @@
+[
+  {
+    "Name": "Gebr. Mayer GmbH & Co. KG",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT5206MM",
+        "VinNumber": "WDB96341311261287",
+        "CategoryType": "Flatbed",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT4453MP",
+        "VinNumber": "WDB96341311269859",
+        "CategoryType": "Jumbo",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT6631TT",
+        "VinNumber": "XLRTE47MS1G141929",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT5204MM",
+        "VinNumber": "WDB96341311261293",
+        "CategoryType": "Jumbo",
+        "MakeType": "Volvo"
+      },
+      {
+        "TruckRegistrationNumber": "CT2706TT",
+        "VinNumber": "YS2R4X211D5333237",
+        "CategoryType": "Flatbed",
+        "MakeType": "Volvo"
+      }
+    ]
+  },
+  {
+    "Name": "North Sea Express",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT3124BB",
+        "VinNumber": "XLRTE47MS1G146169",
+        "CategoryType": "Jumbo",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT1439BB",
+        "VinNumber": "XLRTE47MS1G146275",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT5208MM",
+        "VinNumber": "WDB96341311261288",
+        "CategoryType": "Jumbo",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT5203MM",
+        "VinNumber": "WDB96341311261291",
+        "CategoryType": "Semi",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT1231BB",
+        "VinNumber": "XLRTE47MS1G146652",
+        "CategoryType": "Semi",
+        "MakeType": "Scania"
+      }
+    ]
+  },
+  {
+    "Name": "Buchen UmweltService GmbH",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT3124BB",
+        "VinNumber": "XLRTE47MS1G146169",
+        "CategoryType": "Jumbo",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT5621PB",
+        "VinNumber": "WDB96341311389279",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT5208MM",
+        "VinNumber": "WDB96341311261288",
+        "CategoryType": "Jumbo",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT5205MM",
+        "VinNumber": "WDB96341311261296",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      }
+    ]
+  },
+  {
+    "Name": "ELEKTON AO",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT4968PM",
+        "VinNumber": "W1T96341311427813",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT5639PB",
+        "VinNumber": "WDB96341311389271",
+        "CategoryType": "Jumbo",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT5210MM",
+        "VinNumber": "WDB96341311261289",
+        "CategoryType": "Flatbed",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT6631TT",
+        "VinNumber": "XLRTE47MS1G141929",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      }
+    ]
+  },
+  {
+    "Name": "Heinemann GmbH",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT3094CB",
+        "VinNumber": "W1T96341311428767",
+        "CategoryType": "Semi",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT5208MM",
+        "VinNumber": "WDB96341311261288",
+        "CategoryType": "Jumbo",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CB0441XT",
+        "VinNumber": "XLRTE47MS1G141844",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Mercedes"
+      },
+      {
+        "TruckRegistrationNumber": "CT5647PB",
+        "VinNumber": "WDB96341311389272",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Mercedes"
+      }
+    ]
+  },
+  {
+    "Name": "MCBURNEY HOLDINGS LIMITED",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT1157HH",
+        "VinNumber": "WDB96341311356127",
+        "CategoryType": "Jumbo",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT4968PM",
+        "VinNumber": "W1T96341311427813",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CB0796TP",
+        "VinNumber": "YS2R4X211D5318181",
+        "CategoryType": "Flatbed",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT5617PB",
+        "VinNumber": "WDB96341311389277",
+        "CategoryType": "Semi",
+        "MakeType": "Volvo"
+      }
+    ]
+  },
+  {
+    "Name": "Meopta – optika s.r.o.",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT1230BB",
+        "VinNumber": "XLRTE47MS1G146164",
+        "CategoryType": "Semi",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT4453MP",
+        "VinNumber": "WDB96341311269859",
+        "CategoryType": "Jumbo",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT1231BB",
+        "VinNumber": "XLRTE47MS1G146652",
+        "CategoryType": "Semi",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT2706TT",
+        "VinNumber": "YS2R4X211D5333237",
+        "CategoryType": "Flatbed",
+        "MakeType": "Volvo"
+      }
+    ]
+  },
+  {
+    "Name": "Schmidt Gastransporte GmbH & Co KG",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT5627PB",
+        "VinNumber": "WDB96341311389285",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT5629PB",
+        "VinNumber": "WDB96341311388385",
+        "CategoryType": "Flatbed",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT5205MM",
+        "VinNumber": "WDB96341311261296",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT1145HH",
+        "VinNumber": "WDB96341311356138",
+        "CategoryType": "Semi",
+        "MakeType": "Volvo"
+      }
+    ]
+  },
+  {
+    "Name": "ABC-Logistik GmbH",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CB6230XT",
+        "VinNumber": "XLRTE47MS1G142311",
+        "CategoryType": "Flatbed",
+        "MakeType": "Daf"
+      },
+      {
+        "TruckRegistrationNumber": "CT6631TT",
+        "VinNumber": "XLRTE47MS1G141929",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      },
+      {
+        "TruckRegistrationNumber": "CT5625PB",
+        "VinNumber": "WDB96341311389283",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Scania"
+      }
+    ]
+  },
+  {
+    "Name": "BILLY BOWIE SPECIAL PROJECTS LIMITED",
+    "Trucks": [
+      {
+        "TruckRegistrationNumber": "CT5622PB",
+        "VinNumber": "WDB96341311389281",
+        "CategoryType": "Flatbed",
+        "MakeType": "Man"
+      },
+      {
+        "TruckRegistrationNumber": "CT1293HH",
+        "VinNumber": "XLRTE47MS1G141111",
+        "CategoryType": "Refrigerated",
+        "MakeType": "Volvo"
+      },
+      {
+        "TruckRegistrationNumber": "CT5633PB",
+        "VinNumber": "WDB96341311388387",
+        "CategoryType": "Jumbo",
+        "MakeType": "Volvo"
+      }
+    ]
+  }
+]
