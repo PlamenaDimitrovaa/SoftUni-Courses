@@ -7,6 +7,10 @@ namespace Artillery.Data.Models
 {
     public class Shell
     {
+        public Shell()
+        {
+            this.Guns = new HashSet<Gun>();
+        }
         public int Id { get; set; }
 
         [Range(2, 1680)]
