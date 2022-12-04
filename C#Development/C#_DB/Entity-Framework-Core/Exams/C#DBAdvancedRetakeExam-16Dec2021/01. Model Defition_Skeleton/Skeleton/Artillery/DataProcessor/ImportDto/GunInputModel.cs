@@ -1,19 +1,14 @@
 ﻿using Artillery.Data.Models.Enums;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace Artillery.Data.Models
+namespace Artillery.DataProcessor.ImportDto
 {
-    public class Gun
+    public class GunInputModel
     {
-        public Gun()
-        {
-            this.CountriesGuns = new HashSet<CountryGun>();
-        }
-        public int Id { get; set; }
         public int ManufacturerId { get; set; }
-        public Manufacturer Manufacturer { get; set; }
 
         [Range(100, 1350000)]
         public int GunWeight { get; set; }
@@ -24,9 +19,11 @@ namespace Artillery.Data.Models
 
         [Range(1, 100000)]
         public int Range { get; set; }
-        public GunType GunType { get; set; }
+
+        [Required]
+        [EnumDataType(typeof(GunType))]
+        public string GunType { get; set; }
         public int ShellId { get; set; }
-        public Shell Shell { get; set; }
-        public ICollection<CountryGun> CountriesGuns { get; set; }
+        public ICollection<CountryGunInputModel> Countries { get; set; }
     }
 }
