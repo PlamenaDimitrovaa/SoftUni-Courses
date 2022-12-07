@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Linq;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             //1.Recursive Array Sum
-            int[] arr = { 1,2,3,4 };
-            Console.WriteLine(GetSum(arr, 1));
+            var arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Console.WriteLine(GetSum(arr, 0));
         }
 
         //1.Recursive Array Sum
