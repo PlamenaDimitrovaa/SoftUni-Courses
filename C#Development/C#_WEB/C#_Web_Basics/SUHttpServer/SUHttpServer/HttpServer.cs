@@ -15,67 +15,87 @@ namespace SUHttpServer
         private readonly int port;
         private readonly TcpListener serverListener;
 
-        public HttpServer(string _ipAddress, int _port)
+        private readonly RoutingTable routingTable;
+        public HttpServer(string ipAddress, int port, Action<IRoutingTable> routingTableConfiguration)
         {
-            ipAddress = IPAddress.Parse(_ipAddress);
-            port = _port;
+            this.ipAddress = IPAddress.Parse(ipAddress);
+            this.port = port;
 
-            serverListener = new TcpListener(ipAddress, port);
+            this.serverListener = new TcpListener(this.ipAddress, port);
+            routingTableConfiguration(this.routingTable = new RoutingTable());
         }
 
-        public void Start()
+        public HttpServer(int port, Action<IRoutingTable> routingTable)
+            :this("127.0.0.1", port, routingTable) 
         {
-            serverListener.Start();
+        }
+        public HttpServer(Action<IRoutingTable> routingTable)
+            :this(8080, routingTable)
+        {
+                
+        }
 
-            Console.WriteLine($"Server is listening on port {port}");
-            Console.WriteLine($"Listening for requests");
+        public async void Start()
+        {
+            this.serverListener.Start();
+
+            Console.WriteLine($"Server started on port {port}");
+            Console.WriteLine($"Listening for requests...");
 
             while (true)
             {
-                var connection = serverListener.AcceptTcpClient();
-                var networkStream = connection.GetStream();
-                string strRequest = ReadRequest(networkStream);
-                Request request = Request.Parse(strRequest);
-                Console.WriteLine(strRequest);
-                WriteResponse(networkStream, "Hello World");
-               //connection.Close();
+                var connection = await serverListener.AcceptTcpClientAsync();
+
+                _ = Task.Run(async () =>
+                {
+                    var networkStream = connection.GetStream();
+
+                    var requestText = await this.ReadRequest(networkStream);
+
+                    Console.WriteLine(requestText);
+
+                    Request request = Request.Parse(requestText);
+
+                    var response = this.routingTable.MatchRequest(request);
+
+                    if (response.PreRenderAction != null)
+                        response.PreRenderAction(request, response);
+
+                    await WriteResponse(networkStream, response);
+                    connection.Close();
+                });
             }
         }
 
-        private void WriteResponse(NetworkStream networkStream, string content)
+        private async Task WriteResponse(NetworkStream networkStream, Response response)
         {
-            int contentLength = Encoding.UTF8.GetByteCount(content);
-            string response = $@"HTTP/1.1 200 OK 
-Content-Type: text/plain; charset=UTF-8
-Content-Length: {contentLength}
-
-{content}";
-
-            var responseBytes = Encoding.UTF8.GetBytes(response);
-            networkStream.Write(responseBytes, 0, responseBytes.Length);
+            var responseBytes = Encoding.UTF8.GetBytes(response.ToString());
+            await networkStream.WriteAsync(responseBytes);
         }
 
-        private string ReadRequest(NetworkStream networkStream)
+        private async Task<string> ReadRequest(NetworkStream networkStream)
         {
-            byte[] buffer = new byte[1024];
-            StringBuilder request = new StringBuilder();
+            var bufferLength = 1024;
+            var buffer = new byte[bufferLength];
             int totalBytes = 0;
+            StringBuilder requestBuilder = new StringBuilder();
 
             do
             {
-                int bytesRead = networkStream.Read(buffer, 0, buffer.Length);
+                int bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+
                 totalBytes += bytesRead;
 
                 if (totalBytes > 10 * 1024)
                 {
-                    throw new InvalidOperationException("Request is too large");
+                    throw new InvalidOperationException("Request is too large.");
                 }
 
-                request.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
+                requestBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
 
             } while (networkStream.DataAvailable);
 
-            return request.ToString();
+            return requestBuilder.ToString();
         }
     }
 }
