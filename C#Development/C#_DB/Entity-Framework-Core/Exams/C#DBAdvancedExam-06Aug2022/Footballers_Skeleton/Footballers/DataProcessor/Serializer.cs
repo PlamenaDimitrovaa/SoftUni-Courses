@@ -32,6 +32,7 @@
                 .ThenBy(c => c.CoachName)
                 .ToArray();
 
+
             var xmlSerializer = new XmlSerializer(typeof(ExportXmlCoachDto[]), new XmlRootAttribute("Coaches"));
             var namespaces = new XmlSerializerNamespaces();
             namespaces.Add(String.Empty, String.Empty);
