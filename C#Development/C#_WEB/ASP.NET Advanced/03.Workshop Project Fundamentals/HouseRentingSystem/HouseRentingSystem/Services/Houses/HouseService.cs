@@ -1,5 +1,5 @@
 ﻿using HouseRentingSystem.Data;
-using HouseRentingSystem.Services.Models;
+using HouseRentingSystem.Services.Houses.Models;
 
 namespace HouseRentingSystem.Services.Houses
 {
@@ -9,6 +9,15 @@ namespace HouseRentingSystem.Services.Houses
 
         public HouseService(HouseRentingDbContext data)
              => this.data = data;
+
+        public IEnumerable<HouseCategoryServiceModel> AllCategories()
+        => this.data.Categories
+            .Select(c => new HouseCategoryServiceModel()
+            {
+                Id = c.Id,
+                Name = c.Name
+            })
+            .ToList();
 
         public IEnumerable<HouseIndexServiceModel> LastThreeHouses()
         => data.Houses

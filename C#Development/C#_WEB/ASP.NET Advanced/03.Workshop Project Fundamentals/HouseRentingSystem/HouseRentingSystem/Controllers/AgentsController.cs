@@ -1,4 +1,5 @@
-﻿using HouseRentingSystem.Models.Agents;
+﻿using HouseRentingSystem.Infrastructure;
+using HouseRentingSystem.Models.Agents;
 using HouseRentingSystem.Services.Agents;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,6 @@ namespace HouseRentingSystem.Controllers
         [Authorize]
         public IActionResult Become()
         {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult Become()
-        {
             if (this.agents.ExistsById(this.User.Id()))
             {
                 return BadRequest();
@@ -33,8 +28,34 @@ namespace HouseRentingSystem.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Become(BecomeAgentFormModel agent)
+        public IActionResult Become(BecomeAgentFormModel model)
         {
+            var userId = this.User.Id();
+
+            if (this.agents.ExistsById(userId))
+            {
+                return BadRequest();
+            }
+
+            if (this.agents.UserWithPhoneNumberExists(model.PhoneNumber))
+            {
+                ModelState.AddModelError(nameof(model.PhoneNumber),
+                      "Phone already exists. Enter another one.");
+            }
+
+            if (this.agents.UserHasRents(userId))
+            {
+                ModelState.AddModelError("Error",
+                    "You should have no rents to become an agent!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            this.agents.Create(userId, model.PhoneNumber);
+
             return RedirectToAction(nameof(HousesController.All), "Houses");
         }
     }
