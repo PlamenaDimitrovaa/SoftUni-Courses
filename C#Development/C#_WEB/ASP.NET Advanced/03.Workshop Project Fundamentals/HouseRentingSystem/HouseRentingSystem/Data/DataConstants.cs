@@ -5,12 +5,11 @@
         public class Category
         {
             public const int NameMaxLength = 50;    
-
         }
 
         public class House
         {
-            public const int TitleMinLength = 50;
+            public const int TitleMinLength = 10;
 
             public const int TitleMaxLength = 50;
 
