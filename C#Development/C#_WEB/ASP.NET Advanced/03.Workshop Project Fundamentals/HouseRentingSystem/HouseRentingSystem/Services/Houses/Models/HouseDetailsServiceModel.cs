@@ -1,4 +1,6 @@
-﻿namespace HouseRentingSystem.Services.Houses.Models
+﻿using HouseRentingSystem.Services.Agents.Models;
+
+namespace HouseRentingSystem.Services.Houses.Models
 {
     public class HouseDetailsServiceModel : HouseServiceModel
     {
@@ -6,6 +8,6 @@
 
         public string Category { get; init; } = null!;
 
-        public AgentServiceModel Agent { get; init; }
+        public AgentServiceModel Agent { get; init; } = null!;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HouseRentingSystem.Data;
 using HouseRentingSystem.Data.Entities;
+using HouseRentingSystem.Services.Agents.Models;
 using HouseRentingSystem.Services.Houses.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -178,5 +179,85 @@ namespace HouseRentingSystem.Services.Houses
                 }
             })
             .FirstOrDefault();
+
+        public void Edit(int houseId, string title, string address,
+            string description, string imageUrl, decimal price, int categoryId)
+        {
+            var house = this.data.Houses.Find(houseId);
+
+            house.Title = title;
+            house.Address = address;
+            house.Description = description;
+            house.ImageUrl = imageUrl;
+            house.PricePerMonth = price;
+            house.CategoryId = categoryId;
+
+            this.data.SaveChanges();
+        }
+
+        public bool HasAgentWithId(int houseId, string currentUserId)
+        {
+            var house = this.data.Houses.Find(houseId);
+            var agent = this.data.Agents.FirstOrDefault(a => a.Id == house.AgentId);
+
+            if (agent == null)
+            {
+                return false;
+            }
+
+            if (agent.UserId != currentUserId)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public int GetHouseCategoryId(int houseId)
+        => this.data.Houses.Find(houseId).CategoryId;
+
+        public void Delete(int houseId)
+        {
+            var house = this.data.Houses.Find(houseId);
+
+            this.data.Remove(house);
+            this.data.SaveChanges();
+        }
+
+        public bool IsRented(int id)
+        => this.data.Houses.Find(id).RenterId != null;
+
+        public bool IsRentedByUserWithId(int houseId, string userId)
+        {
+            var house = this.data.Houses.Find(houseId);
+
+            if (house == null)
+            {
+                return false;
+            }
+
+            if (house.RenterId != userId)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void Rent(int houseId, string userId)
+        {
+            var house = this.data.Houses.Find(houseId);
+
+            house.RenterId = userId;
+            this.data.SaveChanges();
+        }
+
+        public void Leave(int houseId)
+        {
+            var house = this.data.Houses.Find(houseId);
+
+            house.RenterId = null;
+            this.data.SaveChanges();
+        }
     }
 }

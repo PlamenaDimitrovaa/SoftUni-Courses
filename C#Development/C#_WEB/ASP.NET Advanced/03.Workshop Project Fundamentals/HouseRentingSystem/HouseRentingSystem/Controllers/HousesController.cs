@@ -118,26 +118,109 @@ namespace HouseRentingSystem.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
-            return View(new HouseFormModel());
+            if (!this.houses.Exists(id))
+            {
+                return BadRequest();
+            }
+
+            if (!this.houses.HasAgentWithId(id, this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            var house = this.houses.HouseDetailsById(id);
+
+            var houseCategoryId = this.houses.GetHouseCategoryId(house.Id);
+
+            var houseModel = new HouseFormModel()
+            {
+                Title = house.Title,
+                Address = house.Address,
+                Description = house.Description,
+                ImageUrl = house.ImageUrl,
+                PricePerMonth = house.PricePerMonth,
+                CategoryId = houseCategoryId,
+                Categories = this.houses.AllCategories()
+            };
+
+            return View(houseModel);
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Edit(int id, HouseFormModel house)
+        public IActionResult Edit(int id, HouseFormModel model)
         {
-            return RedirectToAction(nameof(Details), new { id = "1" });
+            if (!this.houses.Exists(id))
+            {
+                return this.View();
+            }
+
+            if (!this.houses.HasAgentWithId(id, this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            if (!this.houses.CategoryExists(model.CategoryId))
+            {
+                this.ModelState.AddModelError(nameof(model.CategoryId),
+                    "Category does not exists");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                model.Categories = this.houses.AllCategories();
+
+                return View(model);
+            }
+
+            this.houses.Edit(id, model.Title, model.Address, model.Description,
+                model.ImageUrl, model.PricePerMonth, model.CategoryId);
+
+            return RedirectToAction(nameof(Details), new { id = id });
+
         }
 
         [Authorize]
         public IActionResult Delete(int id)
         {
-            return View(new HouseDetailsViewModel());
+            if (!this.houses.Exists(id))
+            {
+                return BadRequest();
+            }
+
+            if (!this.houses.HasAgentWithId(id, this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            var house = this.houses.HouseDetailsById(id);
+
+            var model = new HouseDetailsViewModel()
+            {
+                Title = house.Title,
+                Address = house.Address,
+                ImageUrl = house.ImageUrl
+            };
+
+            return View(model); 
         }
 
-        [Authorize]
         [HttpPost]
-        public IActionResult Delete(HouseFormModel house)
+        [Authorize]
+        public IActionResult Delete(HouseDetailsViewModel model)
         {
+            if (!this.houses.Exists(model.Id))
+            {
+                return BadRequest();
+            }
+
+            if (!this.houses.HasAgentWithId(model.Id, this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            this.houses.Delete(model.Id);
+
             return RedirectToAction(nameof(All));
         }
 
@@ -145,6 +228,23 @@ namespace HouseRentingSystem.Controllers
         [HttpPost]
         public IActionResult Rent(int id)
         {
+            if (!this.houses.Exists(id))
+            {
+                return BadRequest();
+            }
+
+            if (this.agents.ExistsById(this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            if (this.houses.IsRented(id))
+            {
+                return BadRequest();
+            }
+
+            this.houses.Rent(id, this.User.Id());
+
             return RedirectToAction(nameof(Mine));
         }
 
@@ -152,6 +252,19 @@ namespace HouseRentingSystem.Controllers
         [HttpPost]
         public IActionResult Leave(int id)
         {
+            if (!this.houses.Exists(id) ||
+                !this.houses.IsRented(id))
+            {
+                return BadRequest();
+            }
+
+            if (!this.houses.IsRentedByUserWithId(id, this.User.Id()))
+            {
+                return Unauthorized();
+            }
+
+            this.houses.Leave(id);
+
             return RedirectToAction(nameof(Mine));
         }
     }
