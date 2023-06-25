@@ -9,7 +9,7 @@ namespace Homies.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(NameMaxLength)]
+        [MaxLength(TypeNameMaxLength)]
         public string Name { get; set; } = null!;
 
         public ICollection<Event> Events { get; set; } = new List<Event>();

@@ -8,7 +8,7 @@ namespace Homies.Models.Event
         public int Id { get; set; }
 
         [Required]
-        [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
+        [StringLength(EventNameMaxLength, MinimumLength = EventNameMinLength)]
         public string Name { get; set; } = null!;
 
         [Required]

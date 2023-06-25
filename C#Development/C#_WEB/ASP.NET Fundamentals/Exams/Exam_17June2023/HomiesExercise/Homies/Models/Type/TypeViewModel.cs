@@ -8,7 +8,7 @@ namespace Homies.Models.Type
         public int Id { get; set; }
 
         [Required]
-        [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
+        [StringLength(TypeNameMaxLength, MinimumLength = TypeNameMinLength)]
         public string Name { get; set; } = null!;
     }
 }

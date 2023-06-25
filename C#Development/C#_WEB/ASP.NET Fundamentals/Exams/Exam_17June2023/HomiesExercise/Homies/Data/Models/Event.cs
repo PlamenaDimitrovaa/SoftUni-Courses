@@ -11,7 +11,7 @@ namespace Homies.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(NameMaxLength)]
+        [MaxLength(EventNameMaxLength)]
         public string Name { get; set; } = null!;
 
         [Required]
