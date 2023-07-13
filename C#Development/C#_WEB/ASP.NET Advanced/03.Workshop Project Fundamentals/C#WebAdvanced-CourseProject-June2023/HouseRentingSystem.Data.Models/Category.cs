@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static HouseRentingSystem.Common.EntityValidationConstants.Category;
-
-namespace HouseRentingSystem.Data.Models
+﻿namespace HouseRentingSystem.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using static Common.EntityValidationConstants.Category;
+
     public class Category
     {
         public Category()

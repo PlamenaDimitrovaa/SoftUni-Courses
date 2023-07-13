@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using HouseRentingSystem.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Reflection;
-
-namespace HouseRentingSystem.Data
+﻿namespace HouseRentingSystem.Data
 {
+    using System.Reflection;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+
+    using Models;
+
     public class HouseRentingDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         public HouseRentingDbContext(DbContextOptions<HouseRentingDbContext> options)
             : base(options)
         {
+
         }
 
         public DbSet<Category> Categories { get; set; } = null!;
@@ -22,8 +24,7 @@ namespace HouseRentingSystem.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             Assembly configAssembly = Assembly.GetAssembly(typeof(HouseRentingDbContext)) ??
-                Assembly.GetExecutingAssembly();
-
+                                      Assembly.GetExecutingAssembly();
             builder.ApplyConfigurationsFromAssembly(configAssembly);
 
             base.OnModelCreating(builder);

@@ -1,21 +1,21 @@
 ﻿@using static HouseRentingSystem.Common.NotificationMessagesConstants;
 
-@if(TempData.ContainsKey(ErrorMessage))
+@if (TempData.ContainsKey(ErrorMessage))
 {
-    <script>toastr.error('@TempData[ErrorMessage]')</script>
+    <script>toastr.error('@TempData[ErrorMessage]');</script>
 }
 
-@if(TempData.ContainsKey(WarningMessage))
+@if (TempData.ContainsKey(WarningMessage))
 {
-    <script>toastr.warning('@TempData[WarningMessage]')</script>
+    <script>toastr.warning('@TempData[WarningMessage]');</script>
 }
 
 @if (TempData.ContainsKey(InformationMessage))
 {
-    <script>toastr.info('@TempData[InformationMessage]')</script>
+    <script>toastr.info('@TempData[InformationMessage]');</script>
 }
 
 @if (TempData.ContainsKey(SuccessMessage))
 {
-    <script>toastr.success('@TempData[SuccessMessage]')</script>
+    <script>toastr.success('@TempData[SuccessMessage]');</script>
 }

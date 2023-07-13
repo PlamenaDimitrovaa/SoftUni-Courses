@@ -1,12 +1,14 @@
-﻿using HouseRentingSystem.Services.Data.Interfaces;
-using HouseRentingSystem.Web.Infrastructure.Extensions;
-using HouseRentingSystem.Web.ViewModels.Agent;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using static HouseRentingSystem.Common.NotificationMessagesConstants;
-
-namespace HouseRentingSystem.Web.Controllers
+﻿namespace HouseRentingSystem.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
+    using Infrastructure.Extensions;
+    using Services.Data.Interfaces;
+    using ViewModels.Agent;
+
+    using static Common.NotificationMessagesConstants;
+
     [Authorize]
     public class AgentController : Controller
     {
@@ -21,36 +23,34 @@ namespace HouseRentingSystem.Web.Controllers
         public async Task<IActionResult> Become()
         {
             string? userId = this.User.GetId();
-
-            bool isAgent = await this.agentService.AgentExistsByUserIdAsync(userId);
-
+            bool isAgent = await this.agentService.AgentExistsByUserIdAsync(userId!);
             if (isAgent)
             {
-                TempData[ErrorMessage] = "You are already an agent!";
+                this.TempData[ErrorMessage] = "You are already an agent!";
+
                 return this.RedirectToAction("Index", "Home");
             }
 
-            return View();
+            return this.View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Become(BecomeAgentFormModel model)
         {
             string? userId = this.User.GetId();
-
             bool isAgent = await this.agentService.AgentExistsByUserIdAsync(userId);
-
             if (isAgent)
             {
-                TempData[ErrorMessage] = "You are already an agent!";
+                this.TempData[ErrorMessage] = "You are already an agent!";
+
                 return this.RedirectToAction("Index", "Home");
             }
 
-            bool isPhoneNumberTaken = await this.agentService.AgentExistsByPhoneNumberAsync(model.PhoneNumber);
-
+            bool isPhoneNumberTaken =
+                await this.agentService.AgentExistsByPhoneNumberAsync(model.PhoneNumber);
             if (isPhoneNumberTaken)
             {
-                ModelState.AddModelError(nameof(model.PhoneNumber), "Agent with the provided number already exists.");
+                this.ModelState.AddModelError(nameof(model.PhoneNumber), "Agent with the provided phone number already exists!");
             }
 
             if (!this.ModelState.IsValid)
@@ -60,11 +60,11 @@ namespace HouseRentingSystem.Web.Controllers
 
             bool userHasActiveRents = await this.agentService
                 .HasRentsByUserIdAsync(userId);
-
             if (userHasActiveRents)
             {
-                this.TempData[ErrorMessage] = "You must not have any active rents in order to becocme an agent!";
-                return RedirectToAction("Mine", "House");
+                this.TempData[ErrorMessage] = "You must not have any active rents in order to become an agent!";
+
+                return this.RedirectToAction("Mine", "House");
             }
 
             try
@@ -73,7 +73,9 @@ namespace HouseRentingSystem.Web.Controllers
             }
             catch (Exception)
             {
-                this.TempData[ErrorMessage] = "Unexpected error occured while registering you as an agent! Please try again later or contact administrator!";
+                this.TempData[ErrorMessage] =
+                    "Unexpected error occurred while registering you as an agent! Please try again later or contact administrator.";
+
                 return this.RedirectToAction("Index", "Home");
             }
 

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static HouseRentingSystem.Common.EntityValidationConstants.Agent;
-
-namespace HouseRentingSystem.Web.ViewModels.Agent
+﻿namespace HouseRentingSystem.Web.ViewModels.Agent
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using static Common.EntityValidationConstants.Agent;
+
     public class BecomeAgentFormModel
     {
         [Required]

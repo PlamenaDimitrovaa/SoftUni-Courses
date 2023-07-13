@@ -4,21 +4,23 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-HouseRentingSystem.Web-5a8dc70d-cdbf-4aa9-a285-088ceb874492</UserSecretsId>
+    <UserSecretsId>aspnet-HouseRentingSystem.Web-f8367f44-efd2-42c9-bfab-41b621520971</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.16" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.16" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HouseRentingSystem.Common\HouseRentingSystem.Common.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Data.Models\HouseRentingSystem.Data.Models.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Data\HouseRentingSystem.Data.csproj" />
+    <ProjectReference Include="..\HouseRentingSystem.Services.Data.Models\HouseRentingSystem.Services.Data.Models.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Services.Data\HouseRentingSystem.Services.Data.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Web.Infrastructure\HouseRentingSystem.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\HouseRentingSystem.Web.ViewModels\HouseRentingSystem.Web.ViewModels.csproj" />

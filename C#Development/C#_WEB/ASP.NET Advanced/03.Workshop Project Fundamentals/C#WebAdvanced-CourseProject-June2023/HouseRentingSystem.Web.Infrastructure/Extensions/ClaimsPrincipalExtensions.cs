@@ -1,8 +1,7 @@
-﻿
-using System.Security.Claims;
-
-namespace HouseRentingSystem.Web.Infrastructure.Extensions
+﻿namespace HouseRentingSystem.Web.Infrastructure.Extensions
 {
+    using System.Security.Claims;
+
     public static class ClaimsPrincipalExtensions
     {
         public static string? GetId(this ClaimsPrincipal user)

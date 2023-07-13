@@ -1,5 +1,4 @@
-﻿
-namespace HouseRentingSystem.Common
+﻿namespace HouseRentingSystem.Common
 {
     public static class EntityValidationConstants
     {
@@ -24,7 +23,6 @@ namespace HouseRentingSystem.Common
 
             public const string PricePerMonthMinValue = "0";
             public const string PricePerMonthMaxValue = "2000";
-
         }
 
         public static class Agent
